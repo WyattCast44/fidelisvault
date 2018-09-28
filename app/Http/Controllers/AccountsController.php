@@ -46,4 +46,21 @@ class AccountsController extends Controller
          */
         return redirect()->route('user.dashboard');
     }
+
+    /**
+     * API Method for builing the password
+     */
+    public function apiGetAccountPassword(Request $request)
+    {
+        return json_encode(Account::where([
+            'user_id' => auth()->user()->id,
+            'name' => 'Facebook',
+            'username' => '5058353859'
+        ])->exists());
+    }
+    //     return Account::where([
+    //         'user_id' => auth()->user()->id,
+    //         'name' => $request('name'),
+    //         'username' => $request('username')
+    //     ])->exists();
 }

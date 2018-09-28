@@ -15,11 +15,12 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('account-pane', require('./components/AccountPane.vue'));
+Vue.component('account-pane-searchbox', require('./components/AccountPaneSearchBox.vue'));
 
 const app = new Vue({
     el: '#app'
 });
 
-
-const feather = require('feather-icons');
-feather.replace();
+// const feather = require('feather-icons');
+// feather.replace();

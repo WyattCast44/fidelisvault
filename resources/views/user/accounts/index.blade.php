@@ -13,7 +13,7 @@
                 </div>
 
                 <div class="p-4" style="border-bottom: 1px solid rgba(0, 0, 0, 0.125)">
-                    <input type="text" class="form-control" placeholder="Search...">
+                    <account-pane-searchbox></account-pane-searchbox>
                 </div>
 
                 <div class="card-body py-1">
@@ -27,7 +27,9 @@
 
                     @forelse ($accounts as $account)
 
-                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                        <account-pane></account-pane>
+
+                        {{-- <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <div class="left">
                                 <h3>{{ $account->name }}</h3>
                                 <div>
@@ -39,7 +41,7 @@
                                 <button data-toggle="modal" data-target="#" title="Copy Password" class="btn btn-outline-primary btn-rounded mr-2 mb-1">Manage Account</button>
                                 <button data-toggle="modal" data-target="#enterBasePassword" title="Copy Password" class="btn btn-outline-primary btn-rounded">Get Password</button>
                             </div>
-                        </li>
+                        </li> --}}
 
                     @empty
 

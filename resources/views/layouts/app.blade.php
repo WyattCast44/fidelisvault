@@ -51,6 +51,7 @@
                         @else
 
                             <li class="nav-item">
+                                <span class="text-muted">{{ Auth::user()->username }} &middot; </span>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
@@ -68,7 +69,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-5">
             @yield('content')
         </main>
     </div>

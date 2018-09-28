@@ -13,7 +13,7 @@
 
 Route::get('/', 'PagesController@index');
 
-Auth::routes(['verify' => true]);
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('user.dashboard');
 
