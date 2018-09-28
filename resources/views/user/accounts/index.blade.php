@@ -25,58 +25,32 @@
 
                     <ul class="list-group list-group-flush">
 
+                    @forelse ($accounts as $account)
+
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <div class="left">
-                                <h3>Facebook</h3>
+                                <h3>{{ $account->name }}</h3>
                                 <div>
-                                    <p class="text-muted mb-1">www.facebook.com</p>
-                                    <p class="text-muted mb-1">wyatt.castaneda@gmail.com</p>
+                                    <p class="text-muted mb-1">{{ $account->url }}</p>
+                                    <p class="text-muted mb-1">{{ $account->username }}</p>
                                 </div>
                             </div>
-                            <div class="d-flex">
+                            <div class="d-flex flex-wrap">
+                                <button data-toggle="modal" data-target="#" title="Copy Password" class="btn btn-outline-primary btn-rounded mr-2 mb-1">Manage Account</button>
                                 <button data-toggle="modal" data-target="#enterBasePassword" title="Copy Password" class="btn btn-outline-primary btn-rounded">Get Password</button>
                             </div>
                         </li>
 
-                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <div class="left">
-                                <h3>Instagram</h3>
-                                <div>
-                                    <p class="text-muted mb-1">www.instagram.com</p>
-                                    <p class="text-muted mb-1">wyattcastaned44</p>
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <button data-toggle="modal" data-target="#enterBasePassword" title="Copy Password" class="btn btn-outline-primary btn-rounded">Get Password</button>
-                            </div>
-                        </li>
+                    @empty
 
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <div class="left">
-                                <h3>Github</h3>
-                                <div>
-                                    <p class="text-muted mb-1">www.github.com</p>
-                                    <p class="text-muted mb-1">wyattcast44</p>
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <button data-toggle="modal" data-target="#enterBasePassword" title="Copy Password" class="btn btn-outline-primary btn-rounded">Get Password</button>
-                            </div>
+                            <h3>No Accounts Added</h3>
                         </li>
 
-                        {{-- <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <div class="left">
-                                <h3>Github</h3>
-                                <p class="text-muted mb-1">www.github.com</p>
-                            </div>
-                            <div class="d-flex">
-                                <button title="Copy Password" class="btn btn-link"><i data-feather="clipboard"></i></button>
-                                <button title="Show Password" class="btn btn-link"><i data-feather="eye"></i></button>
-                                <button title="Launch in new tab" class="btn btn-link"><i data-feather="external-link"></i></button>
-                            </div>
-                        </li> --}}
+                    @endforelse
 
                     </ul>
+
                 </div>
             </div>
         </div>
@@ -113,9 +87,8 @@
 </form>
 <!-- /Get Password Modal -->
 
-<!-- Add Password Modal -->
-
-<form action="#">
+<!-- Add Account Modal -->
+<form action="{{ route('accounts.store') }}" method="POST">
     <div class="modal fade" id="addNewPassword" tabindex="-1" role="dialog" aria-labelledby="addNewPassword" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -129,41 +102,30 @@
 
             @csrf
             <div class="form-group">
-                <label for="accountName">Account Name</label>
-                <input type="text" class="form-control" id="accountName" name="accountName" placeholder="Facebook">
+                <label for="name">Account Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Facebook">
             </div>
 
             <div class="form-group">
-                <label for="accountUrl">Account Url</label>
-                <input type="text" class="form-control" id="accountUrl" name="accountUrl" placeholder="www.facebook.com">
+                <label for="url">Account Url</label>
+                <input type="text" class="form-control" id="url" name="url" placeholder="www.facebook.com">
             </div>
 
             <div class="form-group">
-                <label for="accountLogin">Account Username or Email</label>
-                <input type="text" class="form-control" id="accountLogin" name="accountLogin">
-            </div>
-
-            <div class="form-group">
-                <label for="accountMasterPassword">Master Password For This Account</label>
-                <input type="password" class="form-control" id="accountMasterPassword" name="accountMasterPassword">
-            </div>
-
-            <div class="form-group">
-                <label for="accountMasterPassword_confirm">Confirm Master Password For This Account</label>
-                <input type="password" class="form-control" id="accountMasterPassword_confirm" name="accountMasterPassword_confirm">
+                <label for="username">Account Username or Email</label>
+                <input type="text" class="form-control" id="username" name="username">
             </div>
 
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary btn-rounded" data-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-primary btn-rounded">Add New Password</button>
+            <button type="submit" class="btn btn-primary btn-rounded">Add New Account</button>
         </div>
         </div>
     </div>
     </div>
 </form>
-
-<!-- /Add Password Modal -->
+<!-- /Add Account Modal -->
 
 @endsection
 

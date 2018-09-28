@@ -15,4 +15,6 @@ Route::get('/', 'PagesController@index');
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('user.dashboard');
+
+Route::post('/home/accounts/create', 'AccountsController@store')->name('accounts.store');

@@ -17,10 +17,10 @@ class CreateAccountsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('serviceUrl')->index();
-            $table->string('displayName')->index()->nullable();
+            $table->string('name')->index();
+            $table->text('url')->nullable();
+            $table->string('username')->index()->nullable();
             $table->string('salt')->index();
-            $table->string('password');
             $table->timestamps();
         });
     }
