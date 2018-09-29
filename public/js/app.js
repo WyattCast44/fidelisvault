@@ -47693,7 +47693,8 @@ var render = function() {
                       id: "password",
                       name: "password",
                       required: "",
-                      autocomplete: "off"
+                      autocomplete: "off",
+                      value: ""
                     }
                   })
                 ])
