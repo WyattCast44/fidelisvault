@@ -14,7 +14,7 @@
 
             <div class="card" style="position:relative; top: -50%;">
 
-                <div class="card-body">
+                <div class="card-body py-5">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 

@@ -14,7 +14,6 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('account-pane', require('./components/AccountPane.vue'));
 Vue.component('account-pane-searchbox', require('./components/AccountPaneSearchBox.vue'));
 Vue.component('password-modal', require('./components/PasswordModal.vue'));
@@ -22,6 +21,3 @@ Vue.component('password-modal', require('./components/PasswordModal.vue'));
 const app = new Vue({
     el: '#app'
 });
-
-// const feather = require('feather-icons');
-// feather.replace();

@@ -1,6 +1,6 @@
 <template>
 
-    <div class="modal fade" :id="'enterBasePassword' + name" tabindex="-1" role="dialog" aria-labelledby="enterBasePassword" aria-hidden="true">
+    <div class="modal fade" :id="'getAccountPassword-' + id" tabindex="-1" role="dialog" aria-labelledby="getAccountPassword" aria-hidden="true">
         <form action="#">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -33,6 +33,7 @@
 <script>
 export default {
   props: {
+    id: Number,
     name: String,
     username: String
   }

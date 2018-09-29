@@ -11,7 +11,7 @@ class AccountsController extends Controller
     public function index()
     {
         $accounts = auth()->user()->accounts->sortBy('name');
-        return view('user.accounts.index', ['accounts' => $accounts]);
+        return view('user.dashboard', ['accounts' => $accounts]);
     }
 
     public function store(Request $request)
@@ -44,7 +44,7 @@ class AccountsController extends Controller
         /**
          * Redirect back to dashboard
          */
-        return redirect()->route('user.accounts.index');
+        return redirect()->route('user.dashboard');
     }
 
     /**
