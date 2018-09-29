@@ -15,7 +15,7 @@
                     <div class="form-group">
                         <input type="hidden" name="name" :value="name">
                         <input type="hidden" name="username" :value="username">
-                        <input type="password" class="form-control" id="password" name="password">
+                        <input type="password" class="form-control" id="password" name="password" required autocomplete="off">
                     </div>
 
                 </div>

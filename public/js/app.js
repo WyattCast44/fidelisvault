@@ -47691,7 +47691,9 @@ var render = function() {
                     attrs: {
                       type: "password",
                       id: "password",
-                      name: "password"
+                      name: "password",
+                      required: "",
+                      autocomplete: "off"
                     }
                   })
                 ])
