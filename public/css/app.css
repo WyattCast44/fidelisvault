@@ -10481,3 +10481,24 @@ a.text-dark:focus {
   border-radius: 1000px;
 }
 
+.hero {
+  background-image: url("/img/trianglify.svg");
+  background-size: cover;
+  background-position: center center;
+  color: rgba(255, 255, 255, 0.85);
+  min-height: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.hero__title {
+  font-size: 3.25rem;
+}
+

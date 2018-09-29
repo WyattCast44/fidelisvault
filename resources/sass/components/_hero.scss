@@ -1,0 +1,14 @@
+.hero {
+    background-image: url('/img/trianglify.svg');
+    background-size: cover;
+    background-position: center center;
+    color: rgba(255, 255, 255, 0.85);
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__title {
+        font-size: 3.25rem;
+    }
+}

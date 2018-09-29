@@ -1,11 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div class="hero container-fluid">
+    <div class="container text-center">
+        <h1 class="hero__title">Sign Up</h1>
+    </div>
+</div>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+
+            <div class="card" style="position:relative; top: -50%;">
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -49,8 +56,8 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    {{ __('Sign Up') }}
                                 </button>
                             </div>
                         </div>
