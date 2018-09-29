@@ -1,38 +1,41 @@
 <template>
 
-    <!-- Get Password Modal -->
-    <form action="#">
-        <div class="modal fade" id="enterBasePassword" tabindex="-1" role="dialog" aria-labelledby="enterBasePassword" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Enter Master Password</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-
-                @csrf
-                <div class="form-group">
-                    <input type="hidden" name="account" value="facebook">
-                    <input type="password" class="form-control" id="basePassword" name="basePassword">
+    <div class="modal fade" :id="'enterBasePassword' + name" tabindex="-1" role="dialog" aria-labelledby="enterBasePassword" aria-hidden="true">
+        <form action="#">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Enter {{ name }} Master Password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+                <div class="modal-body">
 
+                    <div class="form-group">
+                        <input type="hidden" name="name" :value="name">
+                        <input type="hidden" name="username" :value="username">
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-rounded" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btn-rounded">Get Password</button>
+                </div>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-rounded" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-primary btn-rounded">Get Password</button>
-            </div>
-            </div>
-        </div>
-        </div>
-    </form>
-    <!-- /Get Password Modal -->
+        </form>
+    </div>
 
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    name: String,
+    username: String
+  }
+};
 </script>
 

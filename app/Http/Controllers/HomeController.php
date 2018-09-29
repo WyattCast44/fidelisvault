@@ -26,4 +26,9 @@ class HomeController extends Controller
         $accounts = auth()->user()->accounts->sortBy('name');
         return view('user.accounts.index', ['accounts' => $accounts]);
     }
+
+    public function account()
+    {
+        return view('user.account.edit');
+    }
 }

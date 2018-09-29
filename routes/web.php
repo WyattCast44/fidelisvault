@@ -17,4 +17,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('user.dashboard');
 
+Route::get('/account', 'HomeController@account')->name('user.account.edit');
+
 Route::post('/home/accounts/create', 'AccountsController@store')->name('accounts.store');

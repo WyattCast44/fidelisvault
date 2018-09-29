@@ -44,7 +44,7 @@ class AccountsController extends Controller
         /**
          * Redirect back to dashboard
          */
-        return redirect()->route('user.dashboard');
+        return redirect()->route('user.accounts.index');
     }
 
     /**
@@ -58,9 +58,4 @@ class AccountsController extends Controller
             'username' => '5058353859'
         ])->exists());
     }
-    //     return Account::where([
-    //         'user_id' => auth()->user()->id,
-    //         'name' => $request('name'),
-    //         'username' => $request('username')
-    //     ])->exists();
 }

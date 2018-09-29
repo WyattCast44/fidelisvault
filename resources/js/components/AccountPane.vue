@@ -10,12 +10,18 @@
         </div>
         <div class="d-flex">
             <button data-toggle="modal" data-target="#" title="Copy Password" class="btn btn-outline-primary btn-rounded mr-2">Manage Account</button>
-            <button data-toggle="modal" data-target="#enterBasePassword" title="Copy Password" class="btn btn-outline-primary btn-rounded">Get Password</button>
+            <button data-toggle="modal" :data-target="'#enterBasePassword' + name" title="Get Password" class="btn btn-outline-primary btn-rounded">Get Password</button>
         </div>
     </li>
 
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    name: String,
+    url: String,
+    username: String
+  }
+};
 </script>
