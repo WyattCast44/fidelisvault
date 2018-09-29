@@ -19,6 +19,7 @@
 
             <password-modal
                 id={{ $count }}
+                action={{ route('user.accounts.generatePassword') }}
                 name="{{ $account->name }}"
                 username="{{ $account->username }}"
             ></password-modal>

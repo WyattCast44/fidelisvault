@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AccountsController extends Controller
 {
@@ -47,15 +47,24 @@ class AccountsController extends Controller
         return redirect()->route('user.dashboard');
     }
 
-    /**
-     * API Method for builing the password
-     */
-    public function apiGetAccountPassword(Request $request)
+    public function generatePassword(Request $request)
     {
-        return json_encode(Account::where([
+        $this->validate($request, [
+            'name' => 'required|string',
+            'username' => 'required|string',
+            'password' => 'required|string'
+        ]);
+
+        $account = Account::where([
             'user_id' => auth()->user()->id,
-            'name' => 'Facebook',
-            'username' => '5058353859'
-        ])->exists());
+            'name' => $request->get('name'),
+            'username' => $request->get('username')
+        ])->get()->first();
+
+        $salt = $account->salt;
+
+        $password = crypt($request->get('password'), $salt);
+
+        return $password;
     }
 }

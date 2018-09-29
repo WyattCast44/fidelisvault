@@ -47622,12 +47622,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     id: Number,
+    action: String,
     name: String,
     username: String
+  },
+  data: function data() {
+    return {
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute("content")
+    };
   }
 });
 
@@ -47652,7 +47659,7 @@ var render = function() {
       }
     },
     [
-      _c("form", { attrs: { action: "#" } }, [
+      _c("form", { attrs: { action: _vm.action, method: "POST" } }, [
         _c(
           "div",
           {
@@ -47676,6 +47683,11 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c("div", { staticClass: "form-group" }, [
+                  _c("input", {
+                    attrs: { type: "hidden", name: "_token" },
+                    domProps: { value: _vm.csrf }
+                  }),
+                  _vm._v(" "),
                   _c("input", {
                     attrs: { type: "hidden", name: "name" },
                     domProps: { value: _vm.name }

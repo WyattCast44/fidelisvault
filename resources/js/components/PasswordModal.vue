@@ -1,7 +1,7 @@
 <template>
 
     <div class="modal fade" :id="'getAccountPassword-' + id" tabindex="-1" role="dialog" aria-labelledby="getAccountPassword" aria-hidden="true">
-        <form action="#">
+        <form :action="action" method="POST">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
@@ -13,6 +13,7 @@
                 <div class="modal-body">
 
                     <div class="form-group">
+                         <input type="hidden" name="_token" :value="csrf">
                         <input type="hidden" name="name" :value="name">
                         <input type="hidden" name="username" :value="username">
                         <input type="password" class="form-control" id="password" name="password" required autocomplete="off" value="">
@@ -34,8 +35,16 @@
 export default {
   props: {
     id: Number,
+    action: String,
     name: String,
     username: String
+  },
+  data() {
+    return {
+      csrf: document
+        .querySelector('meta[name="csrf-token"]')
+        .getAttribute("content")
+    };
   }
 };
 </script>
