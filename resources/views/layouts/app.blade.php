@@ -72,5 +72,7 @@
 
 </div>
 
+@include('user.partials.flash-success')
+
 </body>
 </html>

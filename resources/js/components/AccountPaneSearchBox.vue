@@ -1,5 +1,5 @@
 <template>
-    <input type="text" class="form-control" placeholder="Search...">
+    <input type="text" class="form-control" placeholder="Search Accounts...">
 </template>
 
 <script>

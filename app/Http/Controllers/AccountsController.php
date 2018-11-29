@@ -8,6 +8,20 @@ use Illuminate\Support\Facades\Hash;
 
 class AccountsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function checkIfValid(Request $request)
+    {
+        return $this->validate($request, [
+            'name' => 'required|string|min:3',
+            'url' => 'nullable|string',
+            'username' => 'nullable|string'
+        ]);
+    }
+
     public function index()
     {
         $accounts = auth()->user()->accounts->sortBy('name');
@@ -19,11 +33,7 @@ class AccountsController extends Controller
         /**
          * Validate form
          */
-        $this->validate($request, [
-            'name' => 'required|string|min:3',
-            'url' => 'nullable|string',
-            'username' => 'nullable|string'
-        ]);
+        $this->checkIfValid($request);
 
         /**
          * Create the salt
@@ -66,5 +76,23 @@ class AccountsController extends Controller
         $password = crypt($request->get('password'), $salt);
 
         return $password;
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->checkIfValid($request);
+
+        $account = Account::findOrFail($id);
+        $account->name = $request->get('name');
+        $account->url = $request->get('url');
+        $account->username = $request->get('username');
+        $account->save();
+
+        return back()->with('status', 'Account Updated!');
+    }
+
+    public function retrivePassword(Request $request)
+    {
+        return [$request->input('id')];
     }
 }

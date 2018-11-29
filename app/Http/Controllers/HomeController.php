@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+
         $accounts = auth()->user()->accounts->sortBy('name');
         return view('user.accounts.index', ['accounts' => $accounts]);
     }

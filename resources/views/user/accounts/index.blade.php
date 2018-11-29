@@ -15,14 +15,9 @@
                 name="{{ $account->name }}"
                 url="{{ $account->url }}"
                 username="{{ $account->username }}"
+                update-url="{{ route('accounts.update', ['id' => $account->id]) }}"
+                get-account-password-url="{{ route('accounts.retrivePassword') }}"
             ></account-pane>
-
-            <password-modal
-                id={{ $count }}
-                action={{ route('user.accounts.generatePassword') }}
-                name="{{ $account->name }}"
-                username="{{ $account->username }}"
-            ></password-modal>
 
             @php
                 $count = $count + 1;
@@ -40,3 +35,10 @@
 
 @endsection
 
+
+{{-- <password-modal
+                id={{ $count }}
+                action={{ route('user.accounts.generatePassword') }}
+                name="{{ $account->name }}"
+                username="{{ $account->username }}"
+            ></password-modal> --}}
