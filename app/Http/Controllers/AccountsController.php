@@ -93,6 +93,22 @@ class AccountsController extends Controller
 
     public function retrivePassword(Request $request)
     {
-        return [$request->input('id')];
+        return $request->input('id');
+    }
+
+    public function destroy(Request $request)
+    {
+        // $this->validate($request, [
+        //     'id' => 'required'
+        // ]);
+
+        // $account = Account::where([
+        //     'id' => (integer)$request->get('id'),
+        //     'user_id' => auth()->user()->id
+        // ])->firstOrFail();
+
+        // $account->delete();
+
+        return back()->with('status', 'Account removed!');
     }
 }

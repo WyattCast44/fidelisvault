@@ -42,3 +42,5 @@
                 name="{{ $account->name }}"
                 username="{{ $account->username }}"
             ></password-modal> --}}
+
+@include('user.partials.flash-success')
