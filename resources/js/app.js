@@ -6,17 +6,29 @@
 
 require('./bootstrap');
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
+// VueJs
 window.Vue = require('vue');
-Vue.component('account-pane', require('./components/AccountPane.vue'));
-Vue.component('account-pane-searchbox', require('./components/AccountPaneSearchBox.vue'));
-Vue.component('password-modal', require('./components/PasswordModal.vue'));
+window.Clipboard = require('vue-clipboard2');
+window.Vue.use(window.Clipboard);
+
+// Components
+Vue.component('Accounts', require('./components/Accounts.vue'));
 
 const app = new Vue({
     el: '#app'
 });
+
+/**
+ * Fade out flash messages
+ */
+setTimeout(function () {
+    $('#flash-message').fadeOut('slow');
+}, 2000); // <-- time in milliseconds
+
+/**
+ * Autofocus on modal open
+ */
+$('.modal').on('shown.bs.modal', function () {
+    $(this).find('[autofocus]').focus();
+});
+

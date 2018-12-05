@@ -25,10 +25,6 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-
-                </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -45,7 +41,7 @@
                     @else
 
                         <li class="nav-item">
-                            <span class="text-muted">{{ Auth::user()->username }} &middot; </span>
+                            <span class="text-muted">{{ auth()->user()->username }} &middot; </span>
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
