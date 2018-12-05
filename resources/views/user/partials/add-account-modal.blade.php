@@ -1,5 +1,5 @@
 <!-- Add Account Modal -->
-<form action="{{ route('accounts.store') }}" method="POST">
+<form action="{{ route('api.accounts.create') }}" method="POST">
     <div class="modal fade" id="addNewPassword" tabindex="-1" role="dialog" aria-labelledby="addNewPassword" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -16,7 +16,7 @@
 
             <div class="form-group">
                 <label for="name">Account Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Facebook" autocomplete="off" required>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Facebook" autocomplete="off" required autofocus>
             </div>
 
             <div class="form-group">

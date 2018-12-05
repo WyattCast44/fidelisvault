@@ -11,7 +11,7 @@ class PagesController extends Controller
         $this->middleware('guest');
     }
 
-    public function index()
+    public function welcome()
     {
         return view('welcome');
     }

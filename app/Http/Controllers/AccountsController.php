@@ -13,6 +13,11 @@ class AccountsController extends Controller
         $this->middleware('auth');
     }
 
+    public function show() 
+    {
+        return view('user.layouts.index');
+    }
+
     public function checkIfValid(Request $request)
     {
         return $this->validate($request, [
@@ -25,7 +30,7 @@ class AccountsController extends Controller
     public function index()
     {
         $accounts = auth()->user()->accounts->sortBy('name');
-        return view('user.dashboard', ['accounts' => $accounts]);
+        return $accounts;
     }
 
     public function store(Request $request)
@@ -38,7 +43,7 @@ class AccountsController extends Controller
         /**
          * Create the salt
          */
-        $salt = Hash::make(str_random(16));
+        $salt = str_random(8);
 
         /**
          * Build the account
@@ -54,7 +59,7 @@ class AccountsController extends Controller
         /**
          * Redirect back to dashboard
          */
-        return redirect()->route('user.dashboard');
+        return back()->with('status', 'Account added!');
     }
 
     public function generatePassword(Request $request)
@@ -78,17 +83,21 @@ class AccountsController extends Controller
         return $password;
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $this->checkIfValid($request);
 
-        $account = Account::findOrFail($id);
+        $account = Account::where([
+            'id' => $request->get('id'),
+            'user_id' => auth()->user()->id
+        ])->firstOrFail();
+
         $account->name = $request->get('name');
         $account->url = $request->get('url');
         $account->username = $request->get('username');
         $account->save();
 
-        return back()->with('status', 'Account Updated!');
+        return $account;
     }
 
     public function retrivePassword(Request $request)
@@ -98,17 +107,13 @@ class AccountsController extends Controller
 
     public function destroy(Request $request)
     {
-        // $this->validate($request, [
-        //     'id' => 'required'
-        // ]);
+        $account = Account::where([
+            'id' => $request->get('id'),
+            'user_id' => auth()->user()->id
+        ])->firstOrFail();
 
-        // $account = Account::where([
-        //     'id' => (integer)$request->get('id'),
-        //     'user_id' => auth()->user()->id
-        // ])->firstOrFail();
+        $account->delete();
 
-        // $account->delete();
-
-        return back()->with('status', 'Account removed!');
+        return 200;
     }
 }
