@@ -1,15 +1,18 @@
 <template>
   <!-- card -->
   <div class="card">
-    
     <!-- Navigation -->
     <div class="card-header">
-        <div class="d-flex justify-content-around flex-wrap">
-            <button data-toggle="modal" data-target="#addNewPassword" class="btn btn-primary btn-rounded my-1">Add New Account</button>
-            <a class="btn btn-primary btn-rounded my-1" href="#">Manage My Account</a>
-        </div>
+      <div class="d-flex justify-content-around flex-wrap">
+        <button
+          data-toggle="modal"
+          data-target="#addNewPassword"
+          class="btn btn-primary btn-rounded my-1"
+        >Add New Account</button>
+        <a class="btn btn-primary btn-rounded my-1" href="#">Manage My Account</a>
+      </div>
     </div>
-    
+
     <!-- Search Pane -->
     <div class="p-4" style="border-bottom: 1px solid rgba(0, 0, 0, 0.125)">
       <input type="text" class="form-control" placeholder="Search accounts..." v-model="searchTerm">
@@ -96,7 +99,10 @@
                   >
                 </div>
                 <button class="btn mr-2 btn-primary btn-rounded">Save Changes</button>
-                <button class="btn btn-outline-danger btn-rounded" v-on:click.stop="deleteAccount(account)">Delete Account</button>
+                <button
+                  class="btn btn-outline-danger btn-rounded"
+                  v-on:click.stop="deleteAccount(account)"
+                >Delete Account</button>
               </form>
             </div>
           </div>
@@ -154,10 +160,14 @@ export default {
       });
     },
     fixUrl(url) {
-      if (!url.includes("http://") && !url.includes("https://")) {
-        return "http://" + url;
+      if (url) {
+        if (!url.includes("http://") && !url.includes("https://")) {
+          return "http://" + url;
+        } else {
+          return url;
+        }
       } else {
-        return url;
+        return "";
       }
     },
     updateAccount(account) {
@@ -173,13 +183,13 @@ export default {
         });
     },
     deleteAccount(account) {
-        console.log(account.id);
-        window.axios
+      console.log(account.id);
+      window.axios
         .post("/accounts/delete", {
-          id: account.id,
+          id: account.id
         })
         .then(res => {
-            this.fetchAccounts();
+          this.fetchAccounts();
         })
         .catch(function(error) {
           console.log(error);
@@ -188,13 +198,13 @@ export default {
   },
   computed: {
     filteredAccounts: function() {
-        return this.accounts.filter(account => {
-          if (account.name.match(new RegExp(this.searchTerm, "gi"))) {
-            return true;
-          } else {
-            return false;
-          }
-        });
+      return this.accounts.filter(account => {
+        if (account.name.match(new RegExp(this.searchTerm, "gi"))) {
+          return true;
+        } else {
+          return false;
+        }
+      });
     }
   }
 };

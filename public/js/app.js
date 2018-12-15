@@ -47590,6 +47590,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -47613,10 +47619,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     },
     fixUrl: function fixUrl(url) {
-      if (!url.includes("http://") && !url.includes("https://")) {
-        return "http://" + url;
+      if (url) {
+        if (!url.includes("http://") && !url.includes("https://")) {
+          return "http://" + url;
+        } else {
+          return url;
+        }
       } else {
-        return url;
+        return "";
       }
     },
     updateAccount: function updateAccount(account) {
