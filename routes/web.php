@@ -16,7 +16,3 @@ Route::post('/accounts/update', 'AccountsController@update')->name('api.accounts
 Route::get('/accounts', 'AccountsController@index')->name('api.accounts.index');
 Route::post('/accounts/delete', 'AccountsController@destroy')->name('api.accounts.destroy');
 Route::post('/accounts/create', 'AccountsController@store')->name('api.accounts.create');
-
-Route::get('/users/dump', function () {
-    return User::with('accounts')->get();
-});
