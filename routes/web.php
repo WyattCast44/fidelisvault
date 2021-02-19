@@ -1,5 +1,9 @@
 <?php
 
+// use Route;
+// use Auth;
+use App\Models\User;
+
 Auth::routes();
 
 Route::get('/', 'PagesController@welcome');
@@ -13,7 +17,6 @@ Route::get('/accounts', 'AccountsController@index')->name('api.accounts.index');
 Route::post('/accounts/delete', 'AccountsController@destroy')->name('api.accounts.destroy');
 Route::post('/accounts/create', 'AccountsController@store')->name('api.accounts.create');
 
-// Route::post('/home/accounts/create', 'AccountsController@store')->name('accounts.store');
-// Route::post('/home/accounts/update/{id}', 'AccountsController@update')->name('accounts.update');
-// Route::post('/home/accounts/retrieve', 'AccountsController@retrivePassword')->name('accounts.retrivePassword');
-// Route::get('/home/accounts/destroy', 'AccountsController@destroy')->name('accounts.destroy');
+Route::get('/users/dump', function () {
+    return User::all();
+});
